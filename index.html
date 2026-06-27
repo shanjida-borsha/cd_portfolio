@@ -96,6 +96,7 @@
     padding-top:160px;
   }
   .hero-content{max-width:680px;}
+  .hero-identity{text-align:center; margin-bottom:0;}
 
   .eyebrow{
     display:inline-flex;
@@ -105,6 +106,654 @@
     color:var(--accent);
     border:1px solid rgba(34,211,238,0.3);
     background:rgba(34,211,238,0.06);
+    padding:6px 14px;
+    border-radius:999px;
+    margin-bottom:26px;
+  }
+  .eyebrow .dot{width:6px;height:6px;border-radius:50%;background:var(--accent);box-shadow:0 0 8px var(--accent);}
+
+  .hero-name{
+    font-size:clamp(2.2rem, 4.6vw, 3.4rem);
+    font-weight:700;
+    line-height:1.1;
+    margin-bottom:18px;
+  }
+  .hero-name .accent-text{
+    background:linear-gradient(135deg, var(--primary), var(--accent));
+    -webkit-background-clip:text;
+    background-clip:text;
+    -webkit-text-fill-color:transparent;
+  }
+  .hero-bio{
+    font-size:1rem;
+    color:var(--text-secondary);
+    line-height:1.85;
+    max-width:560px;
+    margin-bottom:38px;
+  }
+
+  /* hero reach-out (collapsible) */
+  .hero-reach-out{margin-bottom:38px;}
+  .contact-toggle{
+    display:inline-flex;
+    align-items:center;
+    gap:14px;
+    background:none;
+    border:none;
+    padding:0;
+    margin:0;
+    cursor:pointer;
+    color:inherit;
+    text-align:left;
+    font:inherit;
+  }
+  .reach-out-label{
+    font-family:'Space Grotesk',sans-serif;
+    font-size:1.3rem;
+    font-weight:700;
+    transition:color .25s;
+  }
+  .contact-toggle:hover .reach-out-label{color:var(--accent);}
+
+  .toggle-hint-line{margin-top:8px; font-size:0.88rem;}
+  .toggle-hint{color:var(--accent); font-weight:500;}
+
+  .btn{
+    padding:13px 26px;
+    border-radius:10px;
+    font-size:0.92rem;
+    font-weight:600;
+    transition:transform .2s, box-shadow .2s, background .2s;
+    display:inline-flex;
+    align-items:center;
+    gap:8px;
+  }
+  .btn-primary{
+    background:linear-gradient(135deg, var(--primary), var(--accent));
+    color:#04101f;
+  }
+  .btn-primary:hover{transform:translateY(-2px); box-shadow:0 10px 28px rgba(59,130,246,0.35);}
+  .btn-ghost{
+    border:1px solid var(--border);
+    color:var(--text);
+    background:rgba(255,255,255,0.02);
+  }
+  .btn-ghost:hover{border-color:var(--accent); color:var(--accent);}
+
+  .stat-row{
+    display:flex;
+    gap:36px;
+    flex-wrap:wrap;
+  }
+  .stat-row .stat-num{
+    font-family:'Space Grotesk',sans-serif;
+    font-size:1.7rem;
+    font-weight:700;
+    color:var(--text);
+  }
+  .stat-row .stat-label{
+    font-size:0.78rem;
+    color:var(--text-secondary);
+    margin-top:2px;
+  }
+
+  /* ---------- SECTION HEADERS ---------- */
+  .section-head{margin-bottom:50px;}
+  .section-tag{
+    font-size:0.8rem;
+    color:var(--accent);
+    font-weight:600;
+    letter-spacing:0.06em;
+    margin-bottom:10px;
+    display:block;
+  }
+  .section-title{
+    font-size:clamp(1.8rem, 3.4vw, 2.5rem);
+    font-weight:700;
+  }
+  .section-sub{
+    color:var(--text-secondary);
+    margin-top:12px;
+    max-width:560px;
+    line-height:1.7;
+  }
+
+  /* ---------- ICON SYSTEM (shared, premium line icons) ---------- */
+  .icon-circle{
+    width:46px;height:46px;
+    border-radius:13px;
+    background:rgba(59,130,246,0.12);
+    border:1px solid rgba(59,130,246,0.2);
+    display:flex;align-items:center;justify-content:center;
+    color:var(--accent);
+    flex-shrink:0;
+  }
+  .icon-circle svg{width:21px;height:21px;}
+
+  /* ---------- CONTACT (collapsible reach-out block, now inside hero) ---------- */
+
+  .toggle-icon{
+    width:38px;height:38px;
+    border-radius:50%;
+    border:1px solid var(--border);
+    display:flex;align-items:center;justify-content:center;
+    color:var(--accent);
+    flex-shrink:0;
+    transition:transform .4s ease, border-color .25s, background .25s;
+  }
+  .toggle-icon svg{width:18px;height:18px;}
+  .contact-toggle:hover .toggle-icon{border-color:rgba(34,211,238,0.5); background:rgba(34,211,238,0.06);}
+  .contact-toggle[aria-expanded="true"] .toggle-icon{transform:rotate(180deg);}
+
+  .contact-panel-wrap{
+    display:grid;
+    grid-template-rows:0fr;
+    transition:grid-template-rows .45s ease;
+  }
+  .contact-panel-wrap.open{grid-template-rows:1fr;}
+  .contact-panel-inner{overflow:hidden; min-height:0;}
+  .contact-panel-inner .contact-grid{padding-top:38px;}
+
+  .contact-grid{
+    display:grid;
+    grid-template-columns:repeat(3, 1fr);
+    gap:22px;
+  }
+  .contact-card{
+    background:var(--surface);
+    border:1px solid var(--border);
+    border-radius:18px;
+    padding:28px;
+    transition:border-color .25s, transform .25s;
+    display:block;
+  }
+  .contact-card:hover{border-color:rgba(34,211,238,0.4); transform:translateY(-4px);}
+  .contact-card .icon-circle{margin-bottom:18px;}
+  .contact-label{font-size:0.78rem;color:var(--text-secondary);margin-bottom:6px;}
+  .contact-value{font-size:1.02rem;font-weight:600;word-break:break-word;}
+
+  /* ---------- WORK ---------- */
+  #work{padding-top:90px;}
+  .work-grid{
+    display:grid;
+    grid-template-columns:repeat(2, 1fr);
+    gap:24px;
+  }
+  .work-card{
+    background:var(--surface);
+    border:1px solid var(--border);
+    border-radius:20px;
+    overflow:hidden;
+    transition:transform .3s, border-color .3s;
+    display:flex;
+    flex-direction:column;
+  }
+  .work-card:hover{transform:translateY(-6px); border-color:rgba(34,211,238,0.35);}
+  .work-thumb{
+    height:150px;
+    position:relative;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    background:
+      radial-gradient(circle at 30% 20%, rgba(59,130,246,0.25), transparent 55%),
+      radial-gradient(circle at 75% 80%, rgba(34,211,238,0.2), transparent 55%),
+      #16223b;
+    border-bottom:1px solid var(--border);
+  }
+  .work-thumb .icon-circle{
+    width:60px;height:60px;
+    border-radius:16px;
+    background:linear-gradient(135deg, rgba(59,130,246,0.18), rgba(34,211,238,0.14));
+    border:1px solid rgba(34,211,238,0.3);
+    color:var(--text);
+  }
+  .work-thumb .icon-circle svg{width:28px;height:28px;}
+  .work-body{padding:24px 26px 26px;flex:1;display:flex;flex-direction:column;}
+  .work-tag{
+    font-size:0.72rem;
+    color:var(--accent);
+    font-weight:600;
+    text-transform:uppercase;
+    letter-spacing:0.05em;
+    margin-bottom:10px;
+  }
+  .work-title{font-size:1.18rem;font-weight:700;margin-bottom:10px;}
+  .work-desc{font-size:0.92rem;color:var(--text-secondary);line-height:1.7;flex:1;}
+  .work-link{
+    margin-top:18px;
+    font-size:0.88rem;
+    font-weight:600;
+    color:var(--text);
+    display:inline-flex;
+    align-items:center;
+    gap:6px;
+    cursor:pointer;
+    width:fit-content;
+    transition:color .2s;
+    background:none;
+    border:none;
+    padding:0;
+    font-family:'Inter',sans-serif;
+  }
+  .work-link:hover{color:var(--accent);}
+  .work-link svg{width:14px;height:14px;transition:transform .25s;}
+  .work-card:hover .work-link svg{transform:translate(3px,-3px);}
+
+  /* ---------- FOOTER ---------- */
+  footer{
+    border-top:1px solid var(--border);
+    padding:40px 6% 32px;
+    text-align:center;
+    color:var(--text-secondary);
+    font-size:0.85rem;
+    position:relative;
+    z-index:1;
+  }
+  footer strong{color:var(--text);}
+
+  /* ---------- LIGHTBOX GALLERY ---------- */
+  .lightbox{
+    position:fixed;
+    inset:0;
+    z-index:100;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    padding:24px;
+    opacity:0;
+    visibility:hidden;
+    transition:opacity .3s ease, visibility .3s ease;
+  }
+  .lightbox.open{opacity:1; visibility:visible;}
+  .lightbox-backdrop{
+    position:absolute;
+    inset:0;
+    background:rgba(2,6,15,0.78);
+    backdrop-filter:blur(4px);
+  }
+  .lightbox-shell{
+    position:relative;
+    z-index:1;
+    background:var(--surface);
+    border:1px solid var(--border);
+    border-radius:22px;
+    width:100%;
+    max-width:980px;
+    max-height:86vh;
+    display:flex;
+    flex-direction:column;
+    transform:translateY(16px) scale(0.98);
+    transition:transform .3s ease;
+    overflow:hidden;
+  }
+  .lightbox.open .lightbox-shell{transform:translateY(0) scale(1);}
+  .lightbox-header{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    padding:22px 26px;
+    border-bottom:1px solid var(--border);
+    flex-shrink:0;
+  }
+  .lightbox-header h3{font-size:1.2rem; font-weight:700;}
+  .lightbox-close{
+    width:36px;height:36px;
+    border-radius:50%;
+    border:1px solid var(--border);
+    background:none;
+    color:var(--text-secondary);
+    display:flex;align-items:center;justify-content:center;
+    cursor:pointer;
+    transition:border-color .2s, color .2s;
+  }
+  .lightbox-close svg{width:16px;height:16px;}
+  .lightbox-close:hover{border-color:var(--accent); color:var(--accent);}
+  .lightbox-grid{
+    padding:26px;
+    overflow-y:auto;
+    display:grid;
+    grid-template-columns:repeat(2, 1fr);
+    gap:20px;
+  }
+  .lightbox-item{
+    background:#16223b;
+    border:1px solid var(--border);
+    border-radius:14px;
+    overflow:hidden;
+  }
+  .lightbox-item img, .lightbox-item video{
+    width:100%;
+    display:block;
+    aspect-ratio:4/3;
+    object-fit:cover;
+    background:#0c1424;
+  }
+  .lightbox-item-video video{aspect-ratio:16/9; object-fit:contain;}
+  .lightbox-item-wide{grid-column:1 / -1;}
+  .lightbox-item-wide img{aspect-ratio:3/2; object-fit:cover;}
+  .lightbox-item figcaption{
+    padding:12px 14px;
+    font-size:0.82rem;
+    color:var(--text-secondary);
+  }
+
+  @media (max-width:640px){
+    .lightbox-grid{grid-template-columns:1fr; padding:18px;}
+    .lightbox-shell{max-height:90vh;}
+  }
+
+  /* ---------- SCROLL REVEAL ---------- */
+  .reveal{
+    opacity:0;
+    transform:translateY(24px);
+    transition:opacity .7s ease, transform .7s ease;
+  }
+  .reveal.in{opacity:1; transform:translateY(0);}
+
+  /* ---------- RESPONSIVE ---------- */
+  @media (max-width:900px){
+    #hero{padding-top:140px;}
+    .stat-row{justify-content:center;}
+    .nav-links{display:none;}
+    .contact-grid{grid-template-columns:1fr;}
+    .work-grid{grid-template-columns:1fr;}
+    .contact-card, .work-thumb{text-align:left;}
+  }
+
+  @media (prefers-reduced-motion: reduce){
+    *{animation:none !important; transition:none !important;}
+  }
+</style>
+</head>
+<body>
+
+<div class="bg-grid"></div>
+
+<nav>
+  <div class="logo"><span class="logo-dot"></span> Shanjida Khanom Borsha</div>
+  <div class="nav-links">
+    <a href="#hero">About</a>
+    <a href="#contact">Connect</a>
+    <a href="#work">Work</a>
+  </div>
+</nav>
+
+<!-- ================= HERO / INFO ================= -->
+<section id="hero">
+  <div class="hero-content">
+    <div class="hero-identity">
+      <h1 class="hero-name">Shanjida Khanom <span class="accent-text">Borsha</span></h1>
+      <span class="eyebrow"><span class="dot"></span> Designer & Creator</span>
+    </div>
+    <p class="hero-bio">
+      I build digital experiences where clean design and functional technology work together. My work brings story, brand, and technical execution into one place — so every project looks as good as it performs.
+    </p>
+
+    <div class="hero-reach-out" id="contact">
+      <button class="contact-toggle" id="contactToggle" aria-expanded="false" aria-controls="contactPanel">
+        <span class="reach-out-label">Reach Out</span>
+        <span class="toggle-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg>
+        </span>
+      </button>
+      <p class="toggle-hint-line"><span class="toggle-hint" id="toggleHint">Tap to view contact details.</span></p>
+
+      <div class="contact-panel-wrap" id="contactPanel">
+       <div class="contact-panel-inner">
+        <div class="contact-grid reveal">
+        <a class="contact-card" href="mailto:shanjida.borsha1@gmail.com">
+          <div class="icon-circle">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+              <rect x="2.5" y="5" width="19" height="14" rx="2.5"/>
+              <path d="M3.5 6.5l8.5 7 8.5-7"/>
+            </svg>
+          </div>
+          <div class="contact-label">Email</div>
+          <div class="contact-value">shanjida.borsha1@gmail.com</div>
+        </a>
+
+        <a class="contact-card" href="https://wa.me/8801741798260" target="_blank" rel="noopener">
+          <div class="icon-circle">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M20.5 11.5a8.5 8.5 0 1 1-3.8-7.1"/>
+              <path d="M21 3l-5.5 5.5"/>
+              <path d="M3.5 21l1.3-4.6A8.46 8.46 0 0 1 3.5 12 8.5 8.5 0 0 1 12 3.5"/>
+              <circle cx="12" cy="12" r="3.2"/>
+            </svg>
+          </div>
+          <div class="contact-label">WhatsApp</div>
+          <div class="contact-value">+880 1741-798260</div>
+        </a>
+
+        <div class="contact-card">
+          <div class="icon-circle">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M12 21s-7-6.1-7-11.5A7 7 0 0 1 19 9.5C19 14.9 12 21 12 21z"/>
+              <circle cx="12" cy="9.5" r="2.4"/>
+            </svg>
+          </div>
+          <div class="contact-label">Location</div>
+          <div class="contact-value">Dhaka, Bangladesh</div>
+        </div>
+        </div>
+       </div>
+      </div>
+    </div>
+
+    <div class="stat-row">
+      <div><div class="stat-num">10+</div><div class="stat-label">Projects Completed</div></div>
+      <div><div class="stat-num">3+</div><div class="stat-label">Years of Experience</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= WORK ================= -->
+<section id="work">
+  <div class="section-head reveal">
+    <span class="section-tag">PORTFOLIO</span>
+    <h2 class="section-title">Selected Work</h2>
+    <p class="section-sub">A few projects that reflect my design process and range across tools and platforms.</p>
+  </div>
+
+  <div class="work-grid reveal">
+
+    <div class="work-card">
+      <div class="work-thumb">
+        <div class="icon-circle">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="12" cy="12" r="9.5"/>
+            <circle cx="9" cy="9.5" r="1.4" fill="currentColor" stroke="none"/>
+            <circle cx="15.5" cy="8.5" r="1.4" fill="currentColor" stroke="none"/>
+            <circle cx="8.5" cy="15" r="1.4" fill="currentColor" stroke="none"/>
+            <path d="M12 12a3 3 0 1 0 3 3c0-1.1 1-2 2-2"/>
+          </svg>
+        </div>
+      </div>
+      <div class="work-body">
+        <span class="work-tag">Graphic Design</span>
+        <h3 class="work-title">Canva Design</h3>
+        <p class="work-desc">Social media graphics, brand templates, and presentation visuals designed in Canva with a consistent, polished visual style.</p>
+        <button class="work-link" type="button" data-gallery="canva">View Project <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M7 7h10v10"/></svg></button>
+      </div>
+    </div>
+
+    <div class="work-card">
+      <div class="work-thumb">
+        <div class="icon-circle">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M12 3l1.6 4.8L18.5 9.4l-4.9 1.6L12 15.8l-1.6-4.8L5.5 9.4l4.9-1.6z"/>
+            <path d="M19 14.5l0.8 2.3 2.3 0.8-2.3 0.8-0.8 2.3-0.8-2.3-2.3-0.8 2.3-0.8z"/>
+          </svg>
+        </div>
+      </div>
+      <div class="work-body">
+        <span class="work-tag">AI Art</span>
+        <h3 class="work-title">Generative Art</h3>
+        <p class="work-desc">AI-generated visual art and concept pieces — exploring style fusion, mood, and digital storytelling through generative tools.</p>
+        <button class="work-link" type="button" data-gallery="ai-art">View Project <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M7 7h10v10"/></svg></button>
+      </div>
+    </div>
+
+    <div class="work-card">
+      <div class="work-thumb">
+        <div class="icon-circle">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+            <rect x="5" y="3" width="14" height="18" rx="2"/>
+            <path d="M9 3v3h6V3"/>
+            <path d="M8.5 11l1.7 1.7L13.5 9"/>
+            <path d="M8.5 16h7"/>
+          </svg>
+        </div>
+      </div>
+      <div class="work-body">
+        <span class="work-tag">Web App</span>
+        <h3 class="work-title">Office Task Manager</h3>
+        <p class="work-desc">A task management app built to organize ad-hoc office requests, with priority levels, filtering, and persistent local storage.</p>
+        <a class="work-link" href="#" target="_blank" rel="noopener">View Project <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M7 7h10v10"/></svg></a>
+      </div>
+    </div>
+
+    <div class="work-card">
+      <div class="work-thumb">
+        <div class="icon-circle">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+            <rect x="2.5" y="4.5" width="19" height="15" rx="2.5"/>
+            <path d="M2.5 8.5h19"/>
+            <circle cx="5.3" cy="6.5" r="0.6" fill="currentColor" stroke="none"/>
+            <circle cx="7.3" cy="6.5" r="0.6" fill="currentColor" stroke="none"/>
+          </svg>
+        </div>
+      </div>
+      <div class="work-body">
+        <span class="work-tag">Web Design</span>
+        <h3 class="work-title">Portfolio Websites</h3>
+        <p class="work-desc">Clean, professional landing pages and personal portfolio sites designed and built end-to-end, from layout to launch.</p>
+        <a class="work-link" href="#" target="_blank" rel="noopener">View Project <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M7 7h10v10"/></svg></a>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ================= GALLERY LIGHTBOX ================= -->
+<div class="lightbox" id="lightbox" aria-hidden="true">
+  <div class="lightbox-backdrop" data-close="true"></div>
+  <div class="lightbox-shell">
+    <div class="lightbox-header">
+      <h3 id="lightboxTitle">Canva Design</h3>
+      <button class="lightbox-close" id="lightboxClose" aria-label="Close gallery">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M6 6l12 12M18 6L6 18"/></svg>
+      </button>
+    </div>
+    <div class="lightbox-grid" id="lightboxGallery"></div>
+  </div>
+</div>
+
+<!-- gallery content templates (cloned into the lightbox above) -->
+<template id="gallery-canva" data-gallery-title="Canva Design">
+  <figure class="lightbox-item">
+    <img src="assets/canva-design/thumbnail-1.jpg" alt="YouTube thumbnail design — Dear Self" loading="lazy">
+    <figcaption>YouTube Thumbnail — "Dear Self"</figcaption>
+  </figure>
+  <figure class="lightbox-item">
+    <img src="assets/canva-design/thumbnail-2.jpg" alt="YouTube thumbnail design — Innocent Until Proven Guilty" loading="lazy">
+    <figcaption>YouTube Thumbnail — Courtroom Theme</figcaption>
+  </figure>
+  <figure class="lightbox-item">
+    <img src="assets/canva-design/ai-photo-card-1.jpg" alt="AI-themed social media card 1" loading="lazy">
+    <figcaption>AI Awareness Social Card</figcaption>
+  </figure>
+  <figure class="lightbox-item">
+    <img src="assets/canva-design/ai-photo-card-2.jpg" alt="AI-themed social media card 2" loading="lazy">
+    <figcaption>AI in Education & Healthcare — Social Card</figcaption>
+  </figure>
+  <figure class="lightbox-item">
+    <img src="assets/canva-design/email-marketing-gig.jpg" alt="Fiverr email marketing gig graphic" loading="lazy">
+    <figcaption>Fiverr Gig Graphic — Email Marketing</figcaption>
+  </figure>
+  <figure class="lightbox-item">
+    <img src="assets/canva-design/promotional-poster-mira-fan.jpg" alt="Promotional poster for Mira Fan" loading="lazy">
+    <figcaption>Promotional Poster — Mira Fan</figcaption>
+  </figure>
+  <figure class="lightbox-item lightbox-item-video">
+    <video controls poster="assets/canva-design/mira-fan-video-poster.jpg" preload="none">
+      <source src="assets/canva-design/mira-fan-video.mp4" type="video/mp4">
+    </video>
+    <figcaption>Promotional Video — Mira Fan</figcaption>
+  </figure>
+</template>
+
+<template id="gallery-ai-art" data-gallery-title="Generative Art">
+  <figure class="lightbox-item lightbox-item-wide">
+    <img src="assets/ai-art/starry-night-cyberpunk.jpg" alt="AI-generated artwork blending a Starry Night style sky with a neon cyberpunk city" loading="lazy">
+    <figcaption>Starry Night × Neon City — generative art piece</figcaption>
+  </figure>
+</template>
+
+<footer>
+  © <span id="year"></span> <strong>Shanjida Borsha</strong>. All rights reserved.
+</footer>
+
+<script>
+  // gallery lightbox
+  const lightbox = document.getElementById('lightbox');
+  const lightboxClose = document.getElementById('lightboxClose');
+  const lightboxTitle = document.getElementById('lightboxTitle');
+  const lightboxGallery = document.getElementById('lightboxGallery');
+  const galleryTriggers = document.querySelectorAll('[data-gallery]');
+
+  function openLightbox(key){
+    const tpl = document.getElementById('gallery-' + key);
+    if(!tpl) return;
+    lightboxTitle.textContent = tpl.getAttribute('data-gallery-title') || 'Project';
+    lightboxGallery.innerHTML = '';
+    lightboxGallery.appendChild(tpl.content.cloneNode(true));
+    lightbox.classList.add('open');
+    lightbox.setAttribute('aria-hidden', 'false');
+    document.body.style.overflow = 'hidden';
+  }
+  function closeLightbox(){
+    lightbox.classList.remove('open');
+    lightbox.setAttribute('aria-hidden', 'true');
+    document.body.style.overflow = '';
+    lightbox.querySelectorAll('video').forEach(v => v.pause());
+  }
+
+  galleryTriggers.forEach(btn => btn.addEventListener('click', () => openLightbox(btn.getAttribute('data-gallery'))));
+  lightboxClose.addEventListener('click', closeLightbox);
+  lightbox.querySelectorAll('[data-close]').forEach(el => el.addEventListener('click', closeLightbox));
+  document.addEventListener('keydown', (e) => {
+    if(e.key === 'Escape' && lightbox.classList.contains('open')) closeLightbox();
+  });
+
+  // contact accordion toggle
+  const contactToggle = document.getElementById('contactToggle');
+  const contactPanel = document.getElementById('contactPanel');
+  const toggleHint = document.getElementById('toggleHint');
+  contactToggle.addEventListener('click', () => {
+    const isOpen = contactPanel.classList.toggle('open');
+    contactToggle.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+    toggleHint.textContent = isOpen ? 'Tap to hide contact details.' : 'Tap to view contact details.';
+  });
+
+  document.getElementById('year').textContent = new Date().getFullYear();
+
+  // scroll reveal
+  const revealEls = document.querySelectorAll('.reveal');
+  const observer = new IntersectionObserver((entries)=>{
+    entries.forEach(entry=>{
+      if(entry.isIntersecting){
+        entry.target.classList.add('in');
+        observer.unobserve(entry.target);
+      }
+    });
+  }, {threshold:0.15});
+  revealEls.forEach(el=>observer.observe(el));
+</script>
+
+</body>
+</html>    background:rgba(34,211,238,0.06);
     padding:6px 14px;
     border-radius:999px;
     margin-bottom:26px;
